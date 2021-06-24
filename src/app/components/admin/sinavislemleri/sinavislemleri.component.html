@@ -1,0 +1,86 @@
+<mat-toolbar class="admin-toolbar mat-elevation-z8">
+    <span>Sınav İşlemleri Sayfası</span>
+</mat-toolbar>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <section>
+                <div class="button-row mb-1 mt-1">
+                    <div class="flex-container">
+                        <div class="row">{{this.xss}}</div>
+                        <div class="row">{{this.xss |date:"dd.MM.yyyy HH.mm"}}</div>
+                        <div class="row">
+                            <div class="col-md-6"> <button mat-fab color="primary" (click)="SinavEkle()" class="">
+                                <mat-icon>add</mat-icon>
+                            </button> Yeni Ekle</div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control float-right" id="ara" (keyup)="Filtrele($event)" placeholder="Ara...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="mat-elevation-z8 mt-3" class="col-md-12">
+            <table mat-table [dataSource]="dataSource" matSort class="fakulte-full-width">
+                <!-- Name Column -->
+                <ng-container matColumnDef="#">
+                    <th mat-header-cell *matHeaderCellDef> # </th>
+                    <td mat-cell *matCellDef="let i=index"> {{i+1}} </td>
+                </ng-container>
+                <!-- Weight Column -->
+                <ng-container matColumnDef="SinavAd">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Sınav Adı </th>
+                    <td mat-cell *matCellDef="let sinav"> {{sinav.SinavAd}} </td>
+                </ng-container>
+                <ng-container matColumnDef="SinavDonem">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Dönem </th>
+                    <td mat-cell *matCellDef="let sinav">{{sinav.SinavDonem}} </td>
+                </ng-container>
+                <ng-container matColumnDef="SinavZamani">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Sınav Zamanı </th>
+                    <td mat-cell *matCellDef="let sinav">{{sinav.SinavZamani | date:"dd.MM.yyyy HH.mm"}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Durum">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Durum </th>
+                    <td mat-cell *matCellDef="let sinav">
+                        <span *ngIf="sinav?.SinavTamam==1" class="completed">Tamamlandı</span>
+                        <span *ngIf="sinav?.SinavTamam==0" class="cont">Devam ediyor</span>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="BasvuruSayisi">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Başvurular</th>
+                    <td mat-cell *matCellDef="let sinav">{{sinav.SinavBasvuruSayisi}}</td>
+                </ng-container>
+                <ng-container matColumnDef="SinavDetay">
+                    <th mat-header-cell *matHeaderCellDef> Detay </th>
+                    <td mat-cell *matCellDef="let sinav">
+                        <div class="example-button-row">
+                            <button [routerLink]="['../sinavdetay',sinav.SinavId]" mat-icon-button color="primary" matTooltipClass="tooltip-edit" matTooltip="Sınav Detayı">
+                                <mat-icon>view_list</mat-icon>
+                              </button>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="islem">
+                    <th mat-header-cell *matHeaderCellDef> Düzenle / Sil </th>
+                    <td mat-cell *matCellDef="let sinav">
+                        <div class="example-button-row">
+                            <button (click)="SinavDuzenle(sinav)" mat-icon-button color="primary" matTooltipClass="tooltip-edit" matTooltip="Düzenle">
+                                <mat-icon>edit</mat-icon>
+                              </button>
+                            <button (click)="SinavSil(sinav.SinavId)" mat-icon-button color="warn" matTooltipClass="tooltip-delete" matTooltip="Sil" aria-label="Example icon button with a home icon">
+                                <mat-icon>delete</mat-icon>
+                              </button>
+                        </div>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5,10,25,100]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>{{dialogBaslik}}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="OEForm" class="form">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ünvan</mat-label>
+            <mat-select matInput formControlName="OEUnvan" name="OEUnvan" required>
+                <mat-option *ngFor="let unvan of unvanlar" [value]="unvan.id">{{unvan.ad}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ad</mat-label>
+            <input matInput formControlName="OEAd" name="OEAd" type="text" required>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Soyad</mat-label>
+            <input matInput formControlName="OESoyad" name="OESoyad" type="text" required>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Kimlik No</mat-label>
+            <input matInput formControlName="OEKimlikNo" name="OEKimlikNo" type="text" required>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>E-Posta</mat-label>
+            <input matInput formControlName="OEEposta" name="OEEposta" type="text" required>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Telefon</mat-label>
+            <input matInput formControlName="OETel" name="OETel" type="text" required>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Fakülte</mat-label>
+            <mat-select matInput formControlName="OEFakulteId" name="OEFakulteId" required>
+                <mat-option *ngFor="let fakulte of fakulteler" [value]="fakulte.FakulteId">{{fakulte.FakulteAd}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <br>
+    <mat-card-actions>
+        <button class="mr-3" mat-raised-button color="primary" [disabled]="OEForm.invalid" (click)="dialogRef.close(OEForm.value)">Kaydet</button>
+        <button mat-raised-button color="warn" (click)="dialogRef.close()">Kapat</button>
+    </mat-card-actions>
+</div>

@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>{{dialogBaslik}}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="derslikForm" class="form">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Derslik Adını Giriniz.</mat-label>
+            <input matInput formControlName="DerslikAd" name="DerslikAd" type="text" required>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Derslik Kat Giriniz.</mat-label>
+            <input matInput formControlName="DerslikKat" name="DerslikKat" type="text" required>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Derslik Kapasite Giriniz.</mat-label>
+            <input matInput formControlName="DerslikKapasite" name="DerslikKapasite" type="number" required>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Derslik Aktif Mi?</mat-label>
+            <mat-select formControlName="DerslikAktif" name="DerslikAktif" required>
+                <mat-option [value]="0">Pasif</mat-option>
+                <mat-option [value]="1">Aktif</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <br>
+    <mat-card-actions>
+        <button class="mr-3" mat-raised-button color="primary" [disabled]="derslikForm.invalid" (click)="dialogRef.close(derslikForm.value)">Kaydet</button>
+        <button mat-raised-button color="warn" (click)="dialogRef.close()">Kapat</button>
+    </mat-card-actions>
+</div>

@@ -1,0 +1,92 @@
+<mat-toolbar class="admin-toolbar mat-elevation-z8">
+    <span>Kullanıcı Detay Sayfası</span>
+</mat-toolbar>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <button mat-raised-button [routerLink]="['../../kullaniciislemleri']">
+          <mat-icon>arrow_back_ios</mat-icon>Öğretim Elemanı Listesine Dön</button>
+        </div>
+    </div>
+
+    <div class="row mt-3 mat-elevation-z8" style="background-color: rgb(255, 255, 255);">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;"></th>
+                        <th style="width: 1%;"></th>
+                        <th style="width: 79%;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Kimlik No</th>
+                        <td>:</td>
+                        <td>{{seciliOgretimElemani?.OEKimlikNo}}</td>
+                    </tr>
+                    <tr>
+                        <th>Ünvan</th>
+                        <td>:</td>
+                        <td>{{seciliOgretimElemani?.OEUnvan}}</td>
+                    </tr>
+                    <tr>
+                        <th>Adı</th>
+                        <td>:</td>
+                        <td>{{seciliOgretimElemani?.OEAd}}</td>
+                    </tr>
+                    <tr>
+                        <th>Soyadı</th>
+                        <td>:</td>
+                        <td>{{seciliOgretimElemani?.OESoyad}}</td>
+                    </tr>
+                    <tr>
+                        <th>Fakülte</th>
+                        <td>:</td>
+                        <td>{{seciliOgretimElemani?.OEFakulteAd}}</td>
+                    </tr>
+                    <tr>
+                        <th>Telefon</th>
+                        <td>:</td>
+                        <td>{{seciliOgretimElemani?.OETel}}</td>
+                    </tr>
+                    <tr>
+                        <th>E-posta</th>
+                        <td>:</td>
+                        <td>{{seciliOgretimElemani?.OEEposta}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-12 mt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Kullanıcı Adı</th>
+                        <th>Şifre</th>
+                        <th>Yetkis</th>
+                        <th></th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{seciliOEKGiris?.KGOEDKullaniciAdi}}</td>
+                        <td>{{seciliOEKGiris?.KGOEDSifre}}</td>
+                        <td>{{seciliOEKGiris?.KGYetki}}</td>
+                        <td>Son Giriş Zamanı</td>
+                        <td>
+                            <button mat-icon-button color="primary" matTooltipClass="tooltip-edit" matTooltip="Düzenle">
+                            <mat-icon>edit</mat-icon>
+                          </button>
+                            <button mat-icon-button color="warn" matTooltipClass="tooltip-delete" matTooltip="Sil">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

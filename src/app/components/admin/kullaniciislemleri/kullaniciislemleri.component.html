@@ -1,0 +1,73 @@
+<mat-toolbar class="admin-toolbar mat-elevation-z8">
+    <span>Kullanıcı İşlemleri Sayfası</span>
+</mat-toolbar>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <section>
+                <div class="button-row mb-1 mt-1">
+                    <div class="flex-container">
+                        <div class="row">
+                            <div class="col-md-6"> <button mat-fab color="primary" (click)="OEEkle()" class="">
+                                <mat-icon>add</mat-icon>
+                            </button> Yeni Ekle</div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control float-right" id="ara" (keyup)="Filtrele($event)" placeholder="Ara...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="mat-elevation-z8 mt-3 fakulte-full-width" class="col-md-12">
+            <table mat-table [dataSource]="dataSource" matSort class="fakulte-full-width">
+                <!-- Name Column -->
+                <ng-container matColumnDef="#">
+                    <th mat-header-cell *matHeaderCellDef> # </th>
+                    <td mat-cell *matCellDef="let i=index"> {{i+1}} </td>
+                </ng-container>
+                <!-- Weight Column -->
+                <ng-container matColumnDef="OEAd">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Adı </th>
+                    <td mat-cell *matCellDef="let ogretimelemani"> {{ogretimelemani.OEAd}} </td>
+                </ng-container>
+                <ng-container matColumnDef="OESoyad">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Soyadı </th>
+                    <td mat-cell *matCellDef="let ogretimelemani">{{ogretimelemani.OESoyad}} </td>
+                </ng-container>
+                <ng-container matColumnDef="OEUnvan">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ünvanı </th>
+                    <td mat-cell *matCellDef="let ogretimelemani">{{ogretimelemani.OEUnvan}} </td>
+                </ng-container>
+                <ng-container matColumnDef="OEDetay">
+                    <th mat-header-cell *matHeaderCellDef> Detay </th>
+                    <td mat-cell *matCellDef="let ogretimelemani">
+                        <div class="example-button-row">
+                            <button mat-icon-button color="primary" [routerLink]="['../kullanicidetay',ogretimelemani.OEId]" matTooltipClass="tooltip-edit" matTooltip="Sınav Detayı">
+                                <mat-icon>view_list</mat-icon>
+                              </button>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="islem">
+                    <th mat-header-cell *matHeaderCellDef> Düzenle / Sil </th>
+                    <td mat-cell *matCellDef="let ogretimelemani">
+                        <div class="example-button-row">
+                            <button (click)="OEDuzenle(ogretimelemani)" mat-icon-button color="primary" matTooltipClass="tooltip-edit" matTooltip="Düzenle">
+                                <mat-icon>edit</mat-icon>
+                              </button>
+                            <button (click)="OESil(ogretimelemani.OEId)" mat-icon-button color="warn" matTooltipClass="tooltip-delete" matTooltip="Sil" aria-label="Example icon button with a home icon">
+                                <mat-icon>delete</mat-icon>
+                              </button>
+                        </div>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5,10,25,100]" itemsPerPageLabel="dddd" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

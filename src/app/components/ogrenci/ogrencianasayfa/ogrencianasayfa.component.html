@@ -1,0 +1,66 @@
+<div class="container mt-2">
+    <div class="alert alert-success mat-elevation-z8" role="alert">
+        <h4 class="alert-heading">BAŞVURUSU DEVAM EDEN SINAVLAR</h4>
+        <p>Aşağıda başvurusu devam eden sınavlar listelenmektedir. "BAŞVUR" butonuna tıklayarak sınava başvuru yapabilirsiniz.</p>
+        <p class="alert-color">
+            <mat-icon color="warn">error</mat-icon> Sınav süresi geçen sınava başvuru yapılamaz. </p>
+        <p class="alert-color">
+            <mat-icon color="warn">error</mat-icon> Sınav süresi geçmemiş ancak başvuru süresi bitmiş sınava başvuru yapılamaz.</p>
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+    <table class="table o-home  mat-elevation-z8">
+        <thead>
+            <tr>
+                <th scope="col" colspan="5" class="text-center">BAŞVURUSU DEVAM EDEN SINAVLAR</th>
+            </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sınav Adı</th>
+                <th scope="col">Sınav Tarihi</th>
+                <th scope="col">Başvuru Başlangıç</th>
+                <th scope="col">Başvuru Bitiş</th>
+                <th scope="col">Başvur</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sinav of sinavliste,let i=index">
+                <th>{{i+1}}</th>
+                <td>{{sinav.SinavAd}}</td>
+                <td>{{sinav.SinavZamani |date :"dd.MM.yyyy "}} <br> {{sinav.SinavZamani |date :"HH:mm"}}</td>
+                <td>{{sinav.SinavBasvuruBaslama |date :"dd.MM.yyyy "}} <br> {{sinav.SinavBasvuruBaslama |date :"HH:mm"}}</td>
+                <td>{{sinav.SinavBasvuruBitis |date :"dd.MM.yyyy "}} <br> {{sinav.SinavBasvuruBitis |date :"HH:mm"}}</td>
+                <td>
+                    <button mat-raised-button type="button" class="btn btn-success" (click)="BasvuruYap(sinav)" *ngIf="!BasvuruKontrol(sinav.SinavId)"><mat-icon>create</mat-icon> BAŞVUR</button>
+                    <button mat-raised-button type="button" class="btn btn-info" *ngIf="BasvuruKontrol(sinav.SinavId)"><mat-icon>assignment_turned_in </mat-icon> BAŞVURU YAPILDI</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container mt-5 mb-5">
+    <table class="table o-home  mat-elevation-z8">
+        <thead>
+            <tr>
+                <th scope="col" colspan="5" class="text-center">BAŞVURUSU BİTEN SINAVLAR</th>
+            </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sınav Adı</th>
+                <th scope="col">Sınav Tarihi</th>
+                <th scope="col">Başvuru Başlangıç</th>
+                <th scope="col">Başvuru Bitiş</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bsinav of basvuruBitenSinavListe,let i=index">
+                <th>{{i+1}}</th>
+                <td>{{bsinav.SinavAd}}</td>
+                <td>{{bsinav.SinavZamani |date :"dd.MM.yyyy HH:mm"}}</td>
+                <td>{{bsinav.SinavBasvuruBaslama |date :"dd.MM.yyyy HH:mm"}}</td>
+                <td>{{bsinav.SinavBasvuruBitis |date :"dd.MM.yyyy HH:mm"}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

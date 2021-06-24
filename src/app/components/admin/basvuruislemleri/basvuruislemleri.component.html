@@ -1,0 +1,81 @@
+<mat-toolbar class="admin-toolbar mat-elevation-z8">
+    <span>Başvuru İşlemleri Sayfası</span>
+</mat-toolbar>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <section>
+                <div class="button-row mb-1 mt-1">
+                    <div class="flex-container">
+                        <div class="row">
+                            <div class="col-md-6"> <button mat-fab color="primary" (click)="OEEkle()" class="">
+                                <mat-icon>add</mat-icon>
+                            </button> Yeni Ekle</div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control float-right" id="ara" (keyup)="Filtrele($event)" placeholder="Ara...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="mat-elevation-z8 mt-3 full-width" class="col-md-12">
+            <table mat-table [dataSource]="dataSource" matSort class="full-width">
+                <!-- Name Column -->
+                <ng-container matColumnDef="#">
+                    <th mat-header-cell *matHeaderCellDef> # </th>
+                    <td mat-cell *matCellDef="let i=index"> {{i+1}} </td>
+                </ng-container>
+                <!-- Weight Column -->
+                <ng-container matColumnDef="BasvuruSinavAd">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Sınav Adı</th>
+                    <td mat-cell *matCellDef="let basvuru"> {{basvuru.BasvuruSinavAd}} </td>
+                </ng-container>
+                <ng-container matColumnDef="BasvuruSinavZamani">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Sınav Tarihi</th>
+                    <td mat-cell *matCellDef="let basvuru"> {{basvuru.BasvuruSinavZamani |date:"dd/MM/yyyy hh.mm"}} </td>
+                </ng-container>
+                <ng-container matColumnDef="BasvuruOgrenciNo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Öğrenci No </th>
+                    <td mat-cell *matCellDef="let basvuru">{{basvuru.BasvuruOgrenciNo}} </td>
+                </ng-container>
+                <ng-container matColumnDef="BasvuruOgrenciAd">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ad </th>
+                    <td mat-cell *matCellDef="let basvuru">{{basvuru.BasvuruOgrenciAd}} </td>
+                </ng-container>
+                <ng-container matColumnDef="BasvuruOgrenciSoyad">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Soyad </th>
+                    <td mat-cell *matCellDef="let basvuru">{{basvuru.BasvuruOgrenciSoyad}} </td>
+                </ng-container>
+                <ng-container matColumnDef="BasvuruDetay">
+                    <th mat-header-cell *matHeaderCellDef> Detay </th>
+                    <td mat-cell *matCellDef="let ogretimelemani">
+                        <div class="example-button-row">
+                            <button mat-icon-button color="primary" matTooltipClass="tooltip-edit" matTooltip="Sınav Detayı">
+                                <mat-icon>view_list</mat-icon>
+                              </button>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="islem">
+                    <th mat-header-cell *matHeaderCellDef> Düzenle / Sil </th>
+                    <td mat-cell *matCellDef="let ogretimelemani">
+                        <div class="example-button-row">
+                            <button mat-icon-button color="primary" matTooltipClass="tooltip-edit" matTooltip="Düzenle">
+                                <mat-icon>edit</mat-icon>
+                              </button>
+                            <button mat-icon-button color="warn" matTooltipClass="tooltip-delete" matTooltip="Sil" aria-label="Example icon button with a home icon">
+                                <mat-icon>delete</mat-icon>
+                              </button>
+                        </div>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5,10,25,100]" itemsPerPageLabel="dddd" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

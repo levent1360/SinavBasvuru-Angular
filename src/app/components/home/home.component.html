@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <mat-card class="ogrenci-card  mat-elevation-z8">
+                <mat-card-header class="text-center d-block">
+                    <mat-card-title>Sınav Başvuru Formu <br> Öğrenci Girişi</mat-card-title>
+                </mat-card-header>
+                <hr>
+                <mat-card-content>
+                    <form [formGroup]="ogrenciGirisForm" (ngSubmit)="Kaydet()" class="ogrenci-form">
+                        <mat-form-field class="ogrenci-full-width" appearance="outline" required>
+                            <mat-label>Öğrenci TC Kimlik No</mat-label>
+                            <input matInput formControlName="OgrenciTC" name="OgrenciTC" placeholder="11 haneli kimlik numaranızı giriniz.">
+                        </mat-form-field>
+                        <mat-form-field class="ogrenci-full-width" appearance="outline" required>
+                            <mat-label>Öğrenci Numarası</mat-label>
+                            <input matInput formControlName="OgrenciNo" name="OgrenciNo" placeholder="Akdeniz Üniversitesine kayıtlı öğrenci numaranızı giriniz.">
+                        </mat-form-field>
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" [disabled]="ogrenciGirisForm.invalid">GİRİŞ YAP</button>
+                        </mat-card-actions>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <app-footer></app-footer>
+</div>

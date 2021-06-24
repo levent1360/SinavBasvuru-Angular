@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(102, 211, 174)!important;
+}
+
+.ogrenci-form {
+    min-width: 150px;
+    max-width: 1000px;
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+}
+
+.mat-card-title {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: "Poppins";
+}
+
+.ogrenci-card {
+    color: rgb(9, 9, 77);
+}
+
+.ogrenci-full-width {
+    width: 100%;
+}

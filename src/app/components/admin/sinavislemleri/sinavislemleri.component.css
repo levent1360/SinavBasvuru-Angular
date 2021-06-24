@@ -1,0 +1,38 @@
+table {
+    width: fit-content;
+    font-size: 15px;
+}
+
+.mat-header-cell {
+    padding-right: 15px!important;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.fakulte-full-width {
+    width: 100%;
+}
+
+.tooltip-edit {
+    background: rgb(255, 160, 71);
+}
+
+.tooltip-edit {
+    background: rgb(170, 24, 24);
+}
+
+.completed {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-radius: 10px;
+    padding: 2px 5px 2px 5px;
+}
+
+.cont {
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 10px;
+    padding: 2px 5px 2px 5px;
+}

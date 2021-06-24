@@ -1,0 +1,36 @@
+<div class="container mt-2">
+    <div class="alert alert-success mat-elevation-z8" role="alert">
+        <h4 class="alert-heading">BAŞVURU YAPILAN SINAVLAR AŞAĞIDA LİSTELENMEKTEDİR.</h4>
+        <p>
+            <mat-icon color="primary">done</mat-icon> Başvurusu devam eden sınavlar için başvuru iptal işlemi gerçekleştirilebilir. </p>
+        <br>
+        <p class="alert-color">
+            <mat-icon color="warn">error</mat-icon> Sınav süresi geçen sınav başvuruları iptal edilemez. </p>
+        <p class="alert-color">
+            <mat-icon color="warn">error</mat-icon> Sınav süresi geçmemiş ancak başvuru süresi bitmiş sınav başvuruları iptal edilemez. </p>
+        <br>
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+    <table class="table o-home  mat-elevation-z8">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sınav Adı</th>
+                <th scope="col">Sınav Tarihi</th>
+                <th scope="col">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let basvuru of basvuruliste,let i=index">
+                <th>{{i+1}}</th>
+                <td>{{basvuru.BasvuruSinavAd}}</td>
+                <td>{{basvuru.BasvuruSinavZamani |date :"dd.MM.yyyy HH:mm"}} </td>
+                <td>
+                    <button mat-raised-button type="button" color="warn" (click)="BasvuruIptal(basvuru)"><mat-icon>close</mat-icon> BAŞVURU İPTAL</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

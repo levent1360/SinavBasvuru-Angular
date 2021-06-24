@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>{{dialogBaslik}} <span class="float-right sag-uyari">Sınav Başvurusu Yapılıyor...</span></h1>
+<div mat-dialog-content>
+    <h6 class="card-title mb-3">
+        <span>Sayın {{ogrenci?.OgrenciAd}} {{ogrenci?.OgrenciSoyad}};</span>
+    </h6>
+    <div class="card" style="height: 400px;overflow-y: scroll;">
+        <div class="card-body">
+            <p class="card-text">Başvuru yapılacak sınav bilgileri,</p>
+            <p class="card-text">Sınav Adı : {{basvuruYapilanSinav.SinavAd}}</p>
+            <p class="card-text">Sınav Dönemi : {{basvuruYapilanSinav.SinavDonem}}</p>
+            <p class="card-text">Sınav Tarihi : {{basvuruYapilanSinav.SinavZamani |date :"dd.MM.yyyy HH:mm"}}</p>
+            <p class="card-text">Sınav Türü : {{basvuruYapilanSinav.SinavTuru}}</p>
+            <p class="card-text">Sınav Dili : {{basvuruYapilanSinav.SinavDili}}</p>
+            <p class="card-text">Sınav Başvuru Başlangıç : {{basvuruYapilanSinav.SinavBasvuruBaslama |date :"dd.MM.yyyy HH:mm"}}</p>
+            <p class="card-text">Sınav Başvuru Bitiş : {{basvuruYapilanSinav.SinavBasvuruBitis |date :"dd.MM.yyyy HH:mm"}}</p>
+            <p class="card-text">Sınav Açıklama : {{basvuruYapilanSinav.SinavAciklama}}</p>
+        </div>
+    </div>
+    <section class="section">
+        <mat-checkbox class="margin" color="primary" [(ngModel)]="checked">Sınav ile ilgili bilgileri okudum. Sınava başvuru yapmak istiyorum.</mat-checkbox>
+    </section>
+    <br>
+    <mat-card-actions>
+        <button class="mr-3" [disabled]="!checked" mat-raised-button color="primary" (click)="dialogRef.close({islem:true,sinavid:basvuruYapilanSinav.SinavId})"><mat-icon>done</mat-icon> Başvur</button>
+        <button mat-raised-button color="warn" (click)="dialogRef.close({islem:false,sinavid:null})"><mat-icon>cancel</mat-icon> Vazgeç</button>
+    </mat-card-actions>
+</div>

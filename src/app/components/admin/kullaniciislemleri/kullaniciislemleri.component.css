@@ -1,0 +1,24 @@
+table {
+    width: fit-content;
+    font-size: 15px;
+}
+
+.mat-header-cell {
+    padding-right: 15px!important;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.fakulte-full-width {
+    width: 100%;
+}
+
+.tooltip-edit {
+    background: rgb(255, 160, 71);
+}
+
+.tooltip-edit {
+    background: rgb(170, 24, 24);
+}

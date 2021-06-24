@@ -1,0 +1,86 @@
+<mat-toolbar class="admin-toolbar mat-elevation-z8">
+    <span>Derslik İşlemleri Sayfası</span>
+</mat-toolbar>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <button mat-raised-button [routerLink]="['../../fakulteislemleri']"><mat-icon>arrow_back_ios</mat-icon> Fakülte Listesine Dön</button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="alert alert-info" role="alert">
+                {{seciliFakulte?.FakulteAd}} Derslikleri
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <section>
+                <div class="button-row mb-3 mt-1">
+                    <div class="flex-container">
+                        <div class="row">
+                            <div class="col-md-6"> <button mat-fab color="primary" (click)="DerslikEkle()">
+                                <mat-icon>add</mat-icon>
+                            </button> Yeni Ekle</div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control float-right" id="ara" (keyup)="Filtrele($event)" placeholder="Ara...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mat-elevation-z8 mt-3" class="col-md-12">
+            <table mat-table [dataSource]="dataSource" matSort class="derslik-full-width">
+                <!-- Name Column -->
+                <ng-container matColumnDef="#">
+                    <th mat-header-cell *matHeaderCellDef> # </th>
+                    <td mat-cell *matCellDef="let i=index"> {{i+1}} </td>
+                </ng-container>
+                <!-- Weight Column -->
+                <ng-container matColumnDef="DerslikAd">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Derslik Adı </th>
+                    <td mat-cell *matCellDef="let derslik"> {{derslik.DerslikAd}} </td>
+                </ng-container>
+                <ng-container matColumnDef="DerslikKapasite">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Derslik Kapasite </th>
+                    <td mat-cell *matCellDef="let derslik">{{derslik.DerslikKapasite}} </td>
+                </ng-container>
+                <ng-container matColumnDef="DerslikAktif">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Aktif </th>
+                    <td mat-cell *matCellDef="let derslik">
+                        <span class="badge badge-success" *ngIf="derslik.DerslikAktif==1">Aktif</span>
+                        <span class="badge badge-danger" *ngIf="derslik.DerslikAktif==0">Pasif</span>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="DerslikKat">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Kat </th>
+                    <td mat-cell *matCellDef="let derslik">{{derslik.DerslikKat}}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="islem">
+                    <th mat-header-cell *matHeaderCellDef> Düzenle / Sil </th>
+                    <td mat-cell *matCellDef="let derslik">
+                        <div class="example-button-row">
+                            <button (click)="DerslikDuzenle(derslik)" mat-icon-button color="primary" matTooltipClass="tooltip-edit" matTooltip="Düzenle">
+                            <mat-icon>edit</mat-icon>
+                            </button>
+                            <button (click)="derslikSil(derslik.DerslikId)" mat-icon-button color="warn" matTooltipClass="tooltip-delete" matTooltip="Sil" aria-label="Example icon button with a home icon">
+                            <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5,10,25,100]" itemsPerPageLabel="dddd" showFirstLastButtons>
+
+            </mat-paginator>
+        </div>
+    </div>
+
+</div>

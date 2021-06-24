@@ -1,0 +1,24 @@
+.section {
+    margin: 12px 0;
+}
+
+.margin {
+    margin: 0 12px;
+}
+
+.mat-dialog-content {
+    max-height: 100vh;
+}
+
+.mat-dialog-container {
+    overflow: hidden!important;
+}
+
+.sag-uyari {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    padding: .25rem 1rem;
+}

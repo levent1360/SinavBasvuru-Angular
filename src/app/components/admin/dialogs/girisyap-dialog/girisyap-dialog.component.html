@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Yönetici Sayfasına Giriş Yap</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form" class="form">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>E-Posta</mat-label>
+            <input matInput formControlName="KullaniciMail" name="KullaniciMail" type="email" required>
+            <mat-error>
+                Lütfen geçerli bir e-posta adresi giriniz.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Şifre</mat-label>
+            <input matInput formControlName="KullaniciSifre" name="KullaniciSifre" type="password" required>
+        </mat-form-field>
+    </form>
+    <br>
+    <mat-card-actions>
+        <button class="mr-3" mat-raised-button color="primary" [disabled]="form.invalid" (click)="dialogRef.close(form.value)">Giriş Yap</button>
+        <button mat-raised-button color="warn" (click)="dialogRef.close()">Kapat</button>
+    </mat-card-actions>
+</div>

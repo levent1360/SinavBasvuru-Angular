@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>{{dialogBaslik}}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="fakulteForm" class="fakulte-form">
+        <mat-form-field class="fakulte-full-width" appearance="outline">
+            <mat-label>Fakülte Adını Giriniz.</mat-label>
+            <input matInput formControlName="FakulteAd" name="FakulteAd" type="text" required>
+        </mat-form-field>
+    </form>
+    <br>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" [disabled]="fakulteForm.invalid" (click)="dialogRef.close(fakulteForm.value)">Kaydet</button>
+        <button mat-raised-button color="warn" (click)="dialogRef.close()">Kapat</button>
+    </mat-card-actions>
+</div>

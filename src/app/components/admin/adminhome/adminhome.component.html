@@ -1,0 +1,39 @@
+<mat-toolbar class="admin-toolbar mat-elevation-z8">
+    <span>Anasayfa</span>
+</mat-toolbar>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="ibox bg-success color-white widget-stat">
+                <div class="ibox-body mat-elevation-z8">
+                    <h2 class="m-b-5 font-strong">{{sayilar?.FakulteSayisi}}</h2>
+                    <div class="m-b-5">Fakülte</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="ibox bg-info color-white widget-stat">
+                <div class="ibox-body mat-elevation-z8">
+                    <h2 class="m-b-5 font-strong">{{sayilar?.DerslikSayisi}}</h2>
+                    <div class="m-b-5">Derslik</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="ibox bg-warning color-white widget-stat">
+                <div class="ibox-body mat-elevation-z8">
+                    <h2 class="m-b-5 font-strong">{{sayilar?.OgretimElemaniSayisi}}</h2>
+                    <div class="m-b-5">Öğretim Elemanı</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 ">
+            <div class="ibox bg-danger color-white widget-stat">
+                <div class="ibox-body mat-elevation-z8">
+                    <h2 class="m-b-5 font-strong">{{sayilar?.OgrenciSayisi}}</h2>
+                    <div class="m-b-5">Öğrenci</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

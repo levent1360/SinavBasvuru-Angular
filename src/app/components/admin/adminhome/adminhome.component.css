@@ -1,0 +1,40 @@
+.full-height {
+    height: 100%;
+}
+
+.padded {
+    padding: 10px;
+}
+
+.with-icon {
+    display: flex;
+    align-items: center;
+}
+
+.ibox {
+    position: relative;
+    margin-bottom: 25px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+    box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    transition: .35s all ease-in;
+    cursor: pointer;
+}
+
+.ibox:hover {
+    transform: scale(1.15);
+}
+
+.widget-stat .ibox-body {
+    padding: 12px 15px;
+    border-radius: 10px;
+}
+
+.font-strong {
+    font-weight: 600!important;
+}
+
+.color-white {
+    color: #fff!important;
+}

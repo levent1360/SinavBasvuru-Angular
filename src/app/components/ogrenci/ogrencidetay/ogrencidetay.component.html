@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="col-md-12">
+        <div class="p-3 py-5">
+            <h3>ÖĞRENCİ BİLGİLERİ</h3>
+            <form #form="ngForm" (ngSubmit)="Guncelle(mail.value,tel.value)">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Öğrenci Kimlik No:</label>
+                    <div class="col-sm-6">
+                        <input type="text" disabled class="form-control" [value]="ogrenci?.OgrenciTC" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Öğrenci No :</label>
+                    <div class="col-sm-6">
+                        <input type="text" disabled class="form-control" [value]="ogrenci?.OgrenciNo" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Öğrenci Ad:</label>
+                    <div class="col-sm-6">
+                        <input type="text" disabled class="form-control" [value]="ogrenci?.OgrenciAd" required>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Öğrenci Soyad:</label>
+                    <div class="col-sm-6">
+                        <input type="text" disabled class="form-control" [value]="ogrenci?.OgrenciSoyad" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Fakülte:</label>
+                    <div class="col-sm-6">
+                        <input type="text" disabled class="form-control" [value]="ogrenci?.OgrenciFakulteAd" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Bölüm:</label>
+                    <div class="col-sm-6">
+                        <input type="text" disabled class="form-control" [value]="ogrenci?.OgrenciBolum" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Sınıf:</label>
+                    <div class="col-sm-6">
+                        <input type="text" disabled class="form-control" [value]="ogrenci?.OgrenciSinif" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Aktif/Pasif:</label>
+                    <div class="col-sm-6">
+                        <input *ngIf="ogrenci?.OgrenciAktif==1" type="text" disabled class="form-control" value="Aktif" required>
+                        <input *ngIf="ogrenci?.OgrenciAktif==0" type="text" disabled class="form-control" value="Pasif" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Eposta:</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" #mail [value]="ogrenci?.OgrenciMail" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Telefon:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" #tel [value]="ogrenci?.OgrenciTel" required>
+                    </div>
+                </div>
+                <button type="submit" class="mr-3" mat-raised-button color="primary">Bilgilerimi Güncelle</button>
+
+            </form>
+            <br>
+        </div>
+    </div>
+</div>

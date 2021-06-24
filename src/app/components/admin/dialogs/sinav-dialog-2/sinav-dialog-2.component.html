@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{dialogBaslik}}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="sinavForm" class="form">
+
+
+        <mat-form-field>
+            <mat-label>Sınav Zamanı</mat-label>
+            <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" formControlName="SinavZamani">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+        </mat-form-field>
+    </form>
+    <br>
+    <mat-card-actions>
+        <button class="mr-3" mat-raised-button color="primary" [disabled]="sinavForm.invalid" (click)="dialogRef.close(sinavForm.value)">Kaydet</button>
+        <button mat-raised-button color="warn" (click)="dialogRef.close()">Kapat</button>
+    </mat-card-actions>
+</div>

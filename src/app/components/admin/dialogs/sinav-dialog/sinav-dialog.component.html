@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>{{dialogBaslik}}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="sinavForm" class="form">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Sınav Adı</mat-label>
+            <input matInput formControlName="SinavAd" name="SinavAd" type="text" required>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Sınav Zamanı</mat-label>
+            <input matInput [ngxMatDatetimePicker]="zaman" placeholder="Tarih seç" formControlName="SinavZamani" required>
+            <mat-datepicker-toggle matSuffix [for]="zaman"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #zaman></ngx-mat-datetime-picker>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Sınav Dönemi</mat-label>
+            <input matInput formControlName="SinavDonem" name="SinavDonem" type="text" required>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Sınav Türü</mat-label>
+            <mat-select matInput formControlName="SinavTuru" name="SinavTuru" required>
+                <mat-option [value]="'Yıl Sonu'">Yıl Sonu</mat-option>
+                <mat-option [value]="'Yıl İçi'">Yıl İçi</mat-option>
+                <mat-option [value]="'Muafiyet'">Muafiyet</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Sınav Dili</mat-label>
+            <mat-select matInput formControlName="SinavDili" name="SinavDili" type="text" required>
+                <mat-option [value]="'Türkçe'">Türkçe</mat-option>
+                <mat-option [value]="'İngilizce'">İngilizce</mat-option>
+                <mat-option [value]="'Almanca'">Almanca</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Başvuru Başlangıç</mat-label>
+            <input matInput [ngxMatDatetimePicker]="baslama" placeholder="Tarih seç" formControlName="SinavBasvuruBaslama" required>
+            <mat-datepicker-toggle matSuffix [for]="baslama"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #baslama></ngx-mat-datetime-picker>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Başvuru Bitiş</mat-label>
+            <input matInput [ngxMatDatetimePicker]="bitis" placeholder="Tarih seç" formControlName="SinavBasvuruBitis" required>
+            <mat-datepicker-toggle matSuffix [for]="bitis"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #bitis></ngx-mat-datetime-picker>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Sınav Tamamlandı</mat-label>
+            <mat-select matInput formControlName="SinavTamam" name="SinavTamam" required>
+                <mat-option [value]="1">Evet</mat-option>
+                <mat-option [value]="0">Hayır</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Sınav İptal</mat-label>
+            <mat-select matInput formControlName="SinavIptal" name="SinavIptal" required>
+                <mat-option [value]="1">Evet</mat-option>
+                <mat-option [value]="0">Hayır</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Sınav Açıklama</mat-label>
+            <textarea matInput formControlName="SinavAciklama" name="SinavAciklama" required></textarea>
+        </mat-form-field>
+    </form>
+    <br>
+    <mat-card-actions>
+        <button class="mr-3" mat-raised-button color="primary" [disabled]="sinavForm.invalid" (click)="dialogRef.close(sinavForm.value)">Kaydet</button>
+        <button mat-raised-button color="warn" (click)="dialogRef.close()">Kapat</button>
+    </mat-card-actions>
+</div>
